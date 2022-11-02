@@ -31,12 +31,6 @@ export class App extends Component {
   addNewContact = ({ name, number }) => {
     const { contacts } = this.state;
 
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-
     if (
       contacts.find(
         contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -45,6 +39,13 @@ export class App extends Component {
       alert(`${name} is already in contacts.`);
       return;
     }
+
+     const newContact = {
+       id: nanoid(),
+       name,
+       number,
+     };
+
 
     this.setState(({ contacts }) => ({ contacts: [newContact, ...contacts] }));
   };
